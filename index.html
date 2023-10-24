@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and drop</title>
+    <link rel="stylesheet" type="text/css" href="index.css"/>
+</head>
+<body>
+
+    <h1>Arraste a banana até o macaco, para que ele se alimente :)</h1>
+    <br><br>
+    <img id="banana" src="imgs/banana.png" alt="Banana image" draggable="true" width="200px" height="100px">
+
+    <div id="monkey">
+        <img src="imgs/monkey.png" alt="Monkey image" width="300px">
+    </div>
+    
+    <script>
+        const banana = document.getElementById("banana");
+        const monkey = document.getElementById("monkey");
+
+        banana.addEventListener("dragstart", function(event) 
+        {
+            event.dataTransfer.setData("text/plain", "banana");
+        });
+
+        monkey.addEventListener("dragover", function(event) 
+        {
+            event.preventDefault();
+        });
+
+        monkey.addEventListener("drop", function(event) 
+        {
+            event.preventDefault();
+            
+            const draggedItem = event.dataTransfer.getData("text/plain");
+            
+            if (draggedItem === "banana") 
+            {
+                monkey.getElementsByTagName("img")[0].src = "imgs/monkey1.jpg";
+            }
+        });
+
+    </script>
+</body>
+</html>

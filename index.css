@@ -1,0 +1,10 @@
+h1 {
+    text-align: center;
+}
+
+#monkey {
+    width: 300px;
+    height: 360px;
+    margin-top: 10px;
+    margin-left: 500px;
+}
